@@ -1,0 +1,12 @@
+{
+  "name": "sistema-gestion-proyectos",
+  "version": "1.0.0",
+  "description": "Sistema de Gestión de Proyectos Académicos",
+  "main": "main.py",
+  "dependencies": {
+    "pillow": "^10.0.0",
+    "customtkinter": "^5.2.0",
+    "mysql-connector-python": "^8.0.33",
+    "bcrypt": "^5.1.0"
+  }
+}
