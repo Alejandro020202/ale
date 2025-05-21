@@ -3,14 +3,19 @@ import os
 
 class CertificateGenerator:
     def __init__(self):
-        self.template_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'certificate_template.png')
-        self.font_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'Montserrat-Regular.ttf')
-        self.font_bold_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'Montserrat-Bold.ttf')
+        # Rutas base
+        self.base_dir = os.path.dirname(os.path.dirname(__file__))
+        self.assets_dir = os.path.join(self.base_dir, 'assets')
+        self.certificates_dir = os.path.join(self.base_dir, 'certificates')
         
-        # Crear directorio de assets si no existe
-        assets_dir = os.path.join(os.path.dirname(__file__), '..', 'assets')
-        if not os.path.exists(assets_dir):
-            os.makedirs(assets_dir)
+        # Crear directorios necesarios
+        os.makedirs(self.assets_dir, exist_ok=True)
+        os.makedirs(self.certificates_dir, exist_ok=True)
+        
+        # Rutas de recursos
+        self.template_path = os.path.join(self.assets_dir, 'certificate_template.png')
+        self.font_path = os.path.join(self.assets_dir, 'Montserrat-Regular.ttf')
+        self.font_bold_path = os.path.join(self.assets_dir, 'Montserrat-Bold.ttf')
     
     def generate(self, data):
         """
@@ -91,14 +96,9 @@ class CertificateGenerator:
         
         # Guardar el certificado
         output_path = os.path.join(
-            os.path.dirname(__file__), 
-            '..', 
-            'certificates', 
+            self.certificates_dir,
             f'certificado_{data["cedula"]}.png'
         )
-        
-        # Crear directorio si no existe
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
         # Guardar imagen
         img.save(output_path)

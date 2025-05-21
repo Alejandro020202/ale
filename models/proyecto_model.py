@@ -6,8 +6,6 @@ class ProyectoModel:
         self.db = Database()
         self.db.connect()
     
-    # ... (mantener todos los métodos existentes) ...
-
     def get_certificado_info(self, cedula):
         """
         Obtiene la información para generar el certificado de un participante.
@@ -83,3 +81,5 @@ class ProyectoModel:
         WHERE rol IN ('Directora', 'Coordinadora')
         """
         return self.db.fetch_all(query)
+
+    # ... (resto de métodos existentes) ...

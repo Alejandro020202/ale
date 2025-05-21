@@ -1,14 +1,14 @@
 from models.proyecto_model import ProyectoModel
 from utils.security import sanitize_input
 from utils.certificate_generator import CertificateGenerator
+from PIL import Image, ImageDraw, ImageFont
+import os
 
 class ProyectoController:
     def __init__(self):
         self.proyecto_model = ProyectoModel()
         self.certificate_generator = CertificateGenerator()
     
-    # ... (mantener todos los métodos existentes) ...
-
     def generar_certificado(self, cedula):
         """
         Genera un certificado para un participante
@@ -46,3 +46,5 @@ class ProyectoController:
             return True, data
         except Exception as e:
             return False, f"Error al generar el certificado: {str(e)}"
+
+    # ... (resto de métodos existentes) ...
